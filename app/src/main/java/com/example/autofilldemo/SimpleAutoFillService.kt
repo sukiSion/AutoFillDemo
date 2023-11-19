@@ -13,6 +13,8 @@ import android.util.Log
 import android.view.View
 import android.view.autofill.AutofillId
 import android.view.autofill.AutofillValue
+import java.lang.reflect.Array
+import java.util.Arrays
 
 class SimpleAutoFillService: AutofillService() {
     // 触发自动填充时回调
@@ -39,15 +41,16 @@ class SimpleAutoFillService: AutofillService() {
         }
     }
 
+
     private fun parseViewNode(viewNode: ViewNode){
         if (viewNode.autofillHints?.isNotEmpty() == true) {
             // If the client app provides autofill hints, you can obtain them using:
             // viewNode.getAutofillHints();
             viewNode.autofillHints?.forEach {
-                if(it.equals(View.AUTOFILL_HINT_USERNAME)){
-                }else if(it.equals(View.AUTOFILL_HINT_PASSWORD)){
-                }
+
             }
+            Log.e("Sion" , Arrays.toString(viewNode.autofillHints))
+            Log.e("Sion" ,"${viewNode.autofillId}")
         } else {
             // Or use your own heuristics to describe the contents of a view
             // using methods such as getText() or getHint().
