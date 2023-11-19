@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SimpleAutoFillActivity">
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="tx_account , tx_password"
+        android:id="@+id/barrier">
+    </androidx.constraintlayout.widget.Barrier>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        android:id="@+id/barrier1"
+        app:constraint_referenced_ids="tx_account , et_account">
+    </androidx.constraintlayout.widget.Barrier>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        android:id="@+id/barrier2"
+        app:constraint_referenced_ids="tx_password , et_password">
+    </androidx.constraintlayout.widget.Barrier>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account: "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        app:layout_constrainedWidth="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tx_account">
+    </TextView>
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@id/tx_account"
+        app:layout_constraintBottom_toBottomOf="@id/tx_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constrainedWidth="true"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="username"
+        android:hint="Please enter Account"
+        android:importantForAutofill="auto"
+        android:layout_height="wrap_content">
+    </EditText>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password: "
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/et_password"
+        app:layout_constraintBottom_toBottomOf="@id/et_password"
+        app:layout_constraintStart_toStartOf="@id/tx_account"
+        android:id="@+id/tx_password">
+    </TextView>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:hint="Please enter Password"
+        android:layout_marginTop="12dp"
+        android:autofillHints="password"
+        android:importantForAutofill="auto"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/barrier1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constrainedWidth="true"
+        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <Button
+        android:id="@+id/bt_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commit"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GoToAutoFillService"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_commit"
+        android:layout_marginTop="20dp"
+        android:id="@+id/bt_go_service">
+    </Button>
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "AutoFillManager"
+            android:textSize="18sp">
+        </TextView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="isEnable : "
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_auto_fill_manager_is_enabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textSize="18sp">
+            </TextView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="isAutofillSupported : "
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_auto_fill_manager_is_auto_fill_supported"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textSize="18sp">
+            </TextView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hasEnabledAutofillServices : "
+                android:textSize="18sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_auto_fill_manager_has_enabled_auto_fill_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textSize="18sp">
+            </TextView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
